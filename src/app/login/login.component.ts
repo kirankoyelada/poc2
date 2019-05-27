@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import * as userActions from '../state/user.action'; //import store action types (i.e UserActions)
+
 
 @Component({
   selector: 'app-login',
@@ -24,9 +26,7 @@ export class LoginComponent implements OnInit {
 
   checkStateChanged():void{
     console.log("Action fired");
-    this.store.dispatch({
-      type:'REMEMBER_ME', //action type
-      payload:this.maskUserName //when action occured store payload value i.e state change
-    });
+    //Update Action name and value below 
+    this.store.dispatch(new userActions.RememberMe(this.maskUserName));
   }
 }
